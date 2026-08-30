@@ -1,6 +1,7 @@
 # Progress Tracker
 
 狀態：
+
 - ⬜ 未開始
 - 🟨 進行中
 - ✅ 完成
@@ -9,8 +10,8 @@
 ## 年度總進度
 
 | Week | 主題 | 狀態 | 成果 / Commit | 備註 |
-|---:|---|---|---|---|
-| 1 | Python collections / syntax | ⬜ | | |
+| ---: | --- | --- | --- | --- |
+| 1 | Python collections / syntax | ✅ | 501acdc | 無 |
 | 2 | Python engineering basics / pytest | ⬜ | | |
 | 3 | NumPy | ⬜ | | |
 | 4 | Git / Linux / SQL Bridge | ⬜ | | |
@@ -66,39 +67,55 @@
 ## 重要 Checkpoint
 
 ### Week 18
+
 應能：
+
 - 不看教學寫基本 PyTorch training loop。
 
 ### Week 24
+
 應能：
+
 - 白板解釋 Decoder-only Transformer。
 
 ### Week 30
+
 應有：
+
 - Mini GPT from Scratch repository / module。
 
 ### Week 39
+
 應有：
+
 - BankGPT v0.2 RAG。
 - 10–20 題 baseline、Expected Source 與 retrieval trace。
 
 ### Week 42
+
 應有：
+
 - BankGPT v0.3 Evaluation。
 - 可重複執行的 regression test。
 - 開始試投 AI / GenAI / LLM Application 職缺。
 
 ### Week 45
+
 應有：
+
 - BankGPT v0.4 Tool Calling / Agent。
 - Read-only / allowlist / audit / approval 安全邊界。
 
 ### Week 48
+
 應有：
+
 - BankGPT v0.5 Fine-tuning experiment。
 
 ### Week 52
+
 應有：
+
 - BankGPT v1.0。
 - Architecture Diagram。
 - Evaluation Report。
@@ -110,26 +127,38 @@
 
 ### Week XX
 
-本週目標：
+學習目標：
+
 -
 
 完成：
+
 -
 
 我現在能不看資料解釋：
+
 -
 
 實作 / Experiment：
+
 -
 
-遇到的 Bug：
+測試 / 驗收：
+
+-
+
+遇到的問題：
+
 -
 
 Git Commit：
+
 -
 
 尚未理解：
+
 -
 
 下週第一件事：
+
 -
