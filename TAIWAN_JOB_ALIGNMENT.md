@@ -1,10 +1,11 @@
 # Taiwan Job Alignment
 
-更新日期：2026-08-30
+職缺觀察日期：2026-08-30
+課程／求職里程碑調整日期：2026-09-05（同步新版排程；未重新抽樣職缺）。
 
 ## 結論
 
-這條 Roadmap 的主方向與目前台灣 AI / LLM 工程職缺相符，但「涵蓋技能主題」不等於已符合職缺的年資、學歷、領域經驗或上線實績要求。
+依下述 2026-08 的定性觀察，這條 Roadmap 的主方向與當時台灣 AI / LLM 工程職缺相符，但「涵蓋技能主題」不等於已符合職缺的年資、學歷、領域經驗或上線實績要求。
 
 大致可分成兩條市場路線：
 
@@ -25,13 +26,13 @@ Docker                         Quantization
 Evaluation                     GPU / Inference
 ```
 
-從目前搜尋結果可觀察到大量 Application / Integration 類職缺；純 Model Training 類職缺相對集中在較特定的模型、推論與研究團隊。這是定性觀察，不作為精確職缺數量統計。
+從當時搜尋結果可觀察到大量 Application / Integration 類職缺；純 Model Training 類職缺相對集中在較特定的模型、推論與研究團隊。這是定性觀察，不作為精確職缺數量統計。
 
 因此本 Roadmap 採用策略：
 
 1. 保留 Transformer / PyTorch / Mini GPT，建立模型底層理解。
 2. 優先把 SQL、API、RAG、Evaluation、Tool Calling、Docker 做到能展示與說明。
-3. Fine-tuning、vLLM、GPU optimization 作為第二階段能力。
+3. Fine-tuning、vLLM、GPU optimization 與 MCP／Kubernetes 改為主線完成後另排的選修，優先保留整合與部署時間。
 
 ---
 
@@ -120,7 +121,7 @@ Evaluation                     GPU / Inference
 
 Evaluation 不應該放在 Roadmap 最後。
 
-目前金融科技相關職缺已明確出現：
+2026-08 的金融科技相關職缺觀察包含：
 
 - Accuracy
 - Relevance
@@ -134,19 +135,19 @@ Evaluation 不應該放在 Roadmap 最後。
 
 因此本專案規定：
 
-> 從第一個 RAG baseline 開始建立 Evaluation；Week 40–42 再擴充成正式評測套件。後續 Agent、Fine-tuning 與 Model Serving 改動都必須可以比較前後效果。
+> Week 36 建立 retrieval baseline；Week 39 第一個完整 RAG 同週加入答案／citation／拒答檢查；Week 43–44 擴充 Golden Dataset、held-out 與正式回歸評估。後續 Agent 與選修的 Fine-tuning／Model Serving 改動都應比較前後效果。
 
 ---
 
 ## Roadmap 與職缺吻合度
 
-以下只表示「技能主題覆蓋」，不代表錄取機率或完整職務勝任度。由於目前沒有固定樣本數與逐項計分規則，因此不使用 95% 等無法重現的百分比。
+以下只表示「技能主題覆蓋」，不代表錄取機率或完整職務勝任度；選修列在能力地圖，不代表完成第一年就已實作。由於目前沒有固定樣本數與逐項計分規則，因此不使用 95% 等無法重現的百分比。
 
 | 目標職位 | 技能主題覆蓋 | 仍需依職缺補強 |
 |---|---|---|
-| AI Application Engineer | 高 | Cloud、Kubernetes、特定 Agent framework、前端或既有系統整合 |
+| AI Application Engineer | 高 | 更深入 Cloud／企業部署、Kubernetes、特定 Agent framework、前端或既有系統整合 |
 | GenAI Engineer | 高 | Production 經驗、LLMOps、成本與安全治理 |
-| LLM Engineer | 中高 | 模型訓練深度、推論效能、GPU 與分散式系統 |
+| LLM Engineer | 主線涵蓋基礎；深度需選修 | Fine-tuning、模型訓練深度、vLLM／推論效能、GPU 與分散式系統 |
 | ML Engineer | 中 | 資料工程、特徵工程、統計、MLOps 與非 LLM 模型廣度 |
 | LLM Research / Training Engineer | 入門至中 | 深入數學、論文重現、大規模資料與分散式訓練 |
 
@@ -186,53 +187,35 @@ Evaluation 不應該放在 Roadmap 最後。
 
 ## 求職策略
 
-### 第一階段
-Week 1–30：
+排程以 [52_WEEK_PLAN.md](52_WEEK_PLAN.md) 為準；年度 48 週主線／288h + 4 週緩衝／24h = 312h。Week 13、23、35、48 不預排新課程。
 
-建立模型理解。
+### Week 1–13：工程／必要數學與早期作品
 
-成果：
-- Python
-- PyTorch
-- Transformer
-- Mini GPT
+先完成 Python／NumPy／必要數學，再於 Week 9–12 建立 BankGPT v0.1（LLM client、FastAPI、PostgreSQL、tests、Docker）。Week 13 整合／補課。既有 Backend／DB 經驗直接用於作品。
 
-### 第二階段
-Week 31–42：
+### Week 14–35：模型理解與可重現實驗
 
-建立可工作的 AI Engineering 能力。
+保留 ML、PyTorch、Transformer、HF 指定小節與四週 Mini GPT。Week 19 先跟做完整 MLP，Week 22 能獨立組織 training loop，Week 34 完成 Mini GPT。Week 23／35 用於補課並確認既有 API 可重跑。
 
-成果：
-- FastAPI
-- Docker
-- SQL / PostgreSQL integration
-- RAG
-- Vector DB
-- RAG baseline evaluation
-- Testing / Logging
-- BankGPT v0.3
+### Week 36–44：RAG 與 Evaluation
 
-### Week 42 起
+Week 36 建立檢索 baseline，Week 39 同步檢查 RAG 答案與來源。Week 42 的 v0.2 應有可重現 Demo／README、10–20 題 baseline、citation、權限與失敗分析；達標即可開始試投。
 
-開始投：
+Week 43–44 建立至少 20 題 Golden Dataset（含至少 5 題未參與調參的 held-out）、離線回歸 CI 與評估報告，完成 BankGPT v0.3，再補強作品證據。
 
-- AI Engineer
-- AI Application Engineer
-- GenAI Engineer
-- Junior / Mid LLM Engineer
+第一年優先對應 AI Application Engineer／GenAI Engineer；AI Engineer／LLM Engineer 職稱範圍較廣，需逐職缺核對。週數不是投遞門檻或錄取保證；若作品提前達標可以提前投，尚未達標則按驗收調整。
 
-不要等所有 Roadmap 都結束。
+### Week 45–52：工具、安全與部署
 
-### 第三階段
-Week 43–52：
+Week 45–47 完成 v0.4 的 tool calling、唯讀後端整合與有停止條件的 agent；Week 48 保留整合。
 
-增加差異化。
+Week 49–52 完成一次雲端部署、監控／安全案例、rollback、最小 UI 與 Portfolio。v1.0 使用既有 API 模型，不以自架模型、微調或 MCP 為必要條件。
 
-- Tool Calling
-- Agent
-- MCP
-- LoRA / QLoRA
-- vLLM
-- Cloud / Production basics
+### 主線完成後：依目標職缺選進階能力
 
-讓 BankGPT 成為完整 Portfolio。
+- 模型客製化職位：SFT／LoRA 或 QLoRA、資料與 base／tuned evaluation。
+- 模型部署職位：vLLM、量化、GPU／VRAM、latency／throughput 實驗。
+- 應用整合職位：MCP 或單一 Agent framework。
+- 部署平台職位：Kubernetes 與更深入的 Cloud／MLOps。
+
+選修另計時數，不預占補課週。保留模型深度的學習方向，同時讓第一年作品的必要完成範圍可控。
