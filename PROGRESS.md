@@ -24,7 +24,7 @@ MML 代表《Mathematics for Machine Learning》。章節欄只指定應用所�
 | Week | 主題 | MML／教材範圍 | 狀態 | 成果 / Commit | 備註 |
 | ---: | --- | --- | --- | --- | --- |
 | 1 | Python Syntax for C# Developer | — | ✅ | 501acdc | 2026-08-30 當天完成 |
-| 2 | Python Engineering Basics | — | 🟨 |  | 2026-08-31 開始 |
+| 2 | Python Engineering Basics | — | ✅ | 964dceb | 2026-08-31 開始 2026-09-07 完成 |
 | 3 | NumPy + Matrix Bridge | §2.2 矩陣運算／shape；可先讀 | ⬜ |  |  |
 | 4 | Git / Linux / SQL Bridge | — | ⬜ |  |  |
 | 5 | Vector / Matrix / Dot Product | §2.1–2.2 沿用；§3.1–3.4 選定義／例子；§2.4 參考 | 🟨 | [MML 2.1 筆記](notes/math_for_machine_learning/02_linear_algebra/2.1_systems_of_linear_equations.md)、[MML 2.2 筆記](notes/math_for_machine_learning/02_linear_algebra/2.2_matrices.md) | 2026-08-31 開始 |
@@ -158,7 +158,7 @@ Git Commit：
 實際日期：
 
 - 2026-08-31：開始 Week 2 與 Week 5；目前進行中。
-- 2026-09-01：Git 提交將 Week 2 由 ⬜ 改為 🟨，為進度登錄日期。
+- 2026-09-07：Week 2 在總進度表標記為 ✅。
 
 實際用時（概念／實作與除錯／整理，合計）：
 
@@ -208,7 +208,7 @@ MML／教材實際使用小節（必讀／參考）：
 Git Commit：
 
 - `c7f3730`：新增練習骨架與更新進度（2026-09-01）。
-- 尚無使用者完成 TODO 的成果 commit 紀錄。
+- `964dceb`：紀錄為已完成（2026-09-07）。
 
 尚未理解：
 
@@ -226,7 +226,7 @@ Git Commit：
 
 實際日期：
 
-- 2026-08-31：開始 Week 5，與 Week 2 並行（依使用者補充）；目前進行中。
+- 2026-08-31：開始 Week 5，與 Week 2 並行；目前進行中。
 - 2026-09-01：MML.pdf §2.1 線性方程組已讀完（書本頁碼 19 - 21）；[2.1_systems_of_linear_equations.md](notes\math_for_machine_learning\02_linear_algebra\2.1_systems_of_linear_equations.md) 閱讀完成
 - 2026-09-06：MML.pdf §2.2 Matrices 已讀完（書本頁碼 22 - 26）。
 - 2026-09-07：[2.2_matrices.md](notes\math_for_machine_learning\02_linear_algebra\2.2_matrices.md) 閱讀完成
@@ -260,6 +260,7 @@ MML／教材實際使用小節（必讀／參考）：
 - [x] §2.1 閱讀完成；筆記完成。
 - [x] §2.2 閱讀完成；筆記完成。
 - Week 5 保持 🟨：內積／norm／cosine 的實作與整週驗收尚未記錄完成。
+- Week 5 保持 🟨：§2.1 §2.2 numpy練習尚未記錄完成。
 
 知識檢核：
 
@@ -267,7 +268,8 @@ MML／教材實際使用小節（必讀／參考）：
 
 實作 / Experiment：
 
-- [2.2_matrices.py](exercises/math_for_machine_learning/02_linear_algebra/2.2_matrices.py) 筆記附有 NumPy 實驗。
+- [2.1_systems_for_linear_equations.py](exercises/math_for_machine_learning/02_linear_algebra/2.1_system_of_linear_equations.py) NumPy 練習。
+- [2.2_matrices.py](exercises/math_for_machine_learning/02_linear_algebra/2.2_matrices.py) NumPy 練習。
 - 使用者自行手算或執行 NumPy 的結果：尚未回報。
 
 測試 / 驗收：
@@ -284,7 +286,7 @@ MML／教材實際使用小節（必讀／參考）：
 Git Commit：
 
 - `c7f3730`：§2.1 筆記與 Week 5 進行中紀錄（2026-09-01）。
-- §2.2 筆記目前未追蹤；本次進度表更新尚未提交，不填入不存在的成果 commit。
+- `964dceb`：§2.2 筆記（2026-09-07）。
 
 尚未理解：
 
