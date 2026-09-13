@@ -25,7 +25,7 @@ MML 代表《Mathematics for Machine Learning》。章節欄只指定應用所�
 | ---: | --- | --- | --- | --- | --- |
 | 1 | Python Syntax for C# Developer | — | ✅ | 501acdc | 2026-08-30 當天完成 |
 | 2 | Python Engineering Basics | — | ✅ | 964dceb | 2026-08-31 開始 2026-09-07 完成 |
-| 3 | NumPy + Matrix Bridge | §2.2 矩陣運算／shape；可先讀 | ⬜ |  |  |
+| 3 | NumPy + Matrix Bridge | §2.2 矩陣運算／shape；可先讀 | 🟨 | [Week 3 學習與練習](exercises/week03_numpy_matrix_bridge/README.md) | 2026-09-13 開始；教材與練習骨架已建立，待實作與驗收 |
 | 4 | Git / Linux / SQL Bridge | — | ⬜ |  |  |
 | 5 | Vector / Matrix / Dot Product | §2.1–2.2 沿用；§3.1–3.4 選定義／例子；§2.4 參考 | 🟨 | [MML 2.1 筆記](notes/math_for_machine_learning/02_linear_algebra/2.1_systems_of_linear_equations.md)、[MML 2.2 筆記](notes/math_for_machine_learning/02_linear_algebra/2.2_matrices.md)、[§2.1 NumPy 練習](exercises/math_for_machine_learning/02_linear_algebra/2.1_system_of_linear_equations.py)、[§2.2 NumPy 練習](exercises/math_for_machine_learning/02_linear_algebra/2.2_matrices.py) | 2026-08-31 開始；2026-09-13 §2.1–2.2 練習與自我檢查完成；待 §3.1–3.4 與整週驗收 |
 | 6 | Matrix Multiplication / Linear Transformation | §2.2 複習；§2.7 選例子；§2.5–2.6 參考 | ⬜ |  |  |
@@ -221,6 +221,81 @@ Git Commit：
 下週第一件事：
 
 - 本週驗收後接 Week 3 NumPy，搭配 §2.2 矩陣例子。
+
+### Week 3 — NumPy + Matrix Bridge（🟨 進行中）
+
+實際日期：
+
+- 2026-09-13：開始 Week 3；建立 NumPy 學習指引、示範與獨立練習骨架。
+
+實際用時（概念／實作與除錯／整理，合計）：
+
+- 待填；尚未回報實際學習用時，與 Week 5 並行時共用每週 6h 預算。
+
+本週型態（一般／整合補課）：
+
+- 一般；沿用 Week 5 已完成的 §2.2 矩陣基礎。
+
+學習目標：
+
+- 理解 ndarray、shape、slicing、reshape、broadcasting，以及 `*` 與 `@` 的差異。
+- 用小矩陣計算 `X @ W + b`，先預測 batch × feature 的輸出 shape，再驗證數值。
+
+MML／教材實際使用小節（必讀／參考）：
+
+- 必讀：[Week 3 學習指引](exercises/week03_numpy_matrix_bridge/README.md)，搭配其中的 NumPy 官方入門連結；待開始閱讀。
+- 複習：MML §2.2 的矩陣運算與 shape，沿用既有筆記與練習。
+
+教材閱讀與筆記：
+
+- 指引已建立；本週閱讀與個人筆記尚未回報完成。
+
+完成：
+
+- [x] 建立學習指引、可執行示範與 TODO 練習骨架。
+- [x] 建立本週 `.venv` 並安裝 NumPy 2.5.3；示範與練習檢查已由助手驗證。
+- [ ] 完成 shape／slicing／reshape 練習。
+- [ ] 手算並以 NumPy 驗證 `X @ W + b`。
+- [ ] 解釋 `*` 與 `@`，找出並修正 broadcasting 錯誤。
+- [ ] 完成獨立驗收與實際用時紀錄。
+
+知識檢核：
+
+- `(3,)` 與 `(1, 3)` 的差別、切片是否保留維度。
+- 矩陣乘法的內側維度與 broadcasting 從右側對齊的規則。
+- 程式可以執行時，偏移仍可能加在錯誤的軸上。
+
+實作 / Experiment：
+
+- [matrix_bridge.py](exercises/week03_numpy_matrix_bridge/matrix_bridge.py)：依序跟做 basics、multiply、broadcast。
+- [practice.py](exercises/week03_numpy_matrix_bridge/practice.py)：獨立完成五個 TODO 並核對手算結果。
+
+測試 / 驗收：
+
+- 學習者跟做與獨立練習：待完成；教材檢查不代表個人已通過驗收。
+- 教材驗證（2026-09-13）：三段示範執行成功；原始練習顯示 TODO 提示，以記憶體中的參考答案確認檢查通過，檔案保留待作答狀態。
+- 整週驗收：能區分 `*` 與 `@`、預測 batch × feature 的輸出 shape、找出一個 broadcasting 錯誤。
+
+遇到的問題：
+
+- 尚未回報學習問題。
+
+Git Commit：
+
+- 本次建立的 Week 3 教材與進度尚未提交。
+
+尚未理解：
+
+- 待學習後填寫，不預先推定理解程度。
+
+未通過驗收／是否影響先備／移入哪個緩衝或順延週：
+
+- 尚未驗收；沒有已確認的失敗或延期紀錄。若 shape／broadcasting 影響後續實作，先補齊，必要時使用 Week 13 緩衝並順延。
+
+下週第一件事：
+
+- 本週下一步：先做指引中的 30–45 分鐘 shape／slicing 入門，再完成 `X @ W + b` 與 broadcasting 練習。
+- Week 3 驗收完成後接 Week 4 Git／Linux／SQL Bridge。
 
 ### Week 5 — Vector / Matrix / Dot Product（🟨 進行中）
 
