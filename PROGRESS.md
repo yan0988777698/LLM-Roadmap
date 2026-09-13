@@ -2,7 +2,7 @@
 
 課程調整日期：2026-09-05。週次與必要驗收依 [52_WEEK_PLAN.md](52_WEEK_PLAN.md)。
 
-最近進度更新：2026-09-06。
+最近進度更新：2026-09-13。
 
 ## 狀態與時間
 
@@ -27,7 +27,7 @@ MML 代表《Mathematics for Machine Learning》。章節欄只指定應用所�
 | 2 | Python Engineering Basics | — | ✅ | 964dceb | 2026-08-31 開始 2026-09-07 完成 |
 | 3 | NumPy + Matrix Bridge | §2.2 矩陣運算／shape；可先讀 | ⬜ |  |  |
 | 4 | Git / Linux / SQL Bridge | — | ⬜ |  |  |
-| 5 | Vector / Matrix / Dot Product | §2.1–2.2 沿用；§3.1–3.4 選定義／例子；§2.4 參考 | 🟨 | [MML 2.1 筆記](notes/math_for_machine_learning/02_linear_algebra/2.1_systems_of_linear_equations.md)、[MML 2.2 筆記](notes/math_for_machine_learning/02_linear_algebra/2.2_matrices.md) | 2026-08-31 開始 |
+| 5 | Vector / Matrix / Dot Product | §2.1–2.2 沿用；§3.1–3.4 選定義／例子；§2.4 參考 | 🟨 | [MML 2.1 筆記](notes/math_for_machine_learning/02_linear_algebra/2.1_systems_of_linear_equations.md)、[MML 2.2 筆記](notes/math_for_machine_learning/02_linear_algebra/2.2_matrices.md)、[§2.1 NumPy 練習](exercises/math_for_machine_learning/02_linear_algebra/2.1_system_of_linear_equations.py)、[§2.2 NumPy 練習](exercises/math_for_machine_learning/02_linear_algebra/2.2_matrices.py) | 2026-08-31 開始；2026-09-13 §2.1–2.2 練習與自我檢查完成；待 §3.1–3.4 與整週驗收 |
 | 6 | Matrix Multiplication / Linear Transformation | §2.2 複習；§2.7 選例子；§2.5–2.6 參考 | ⬜ |  |  |
 | 7 | Calculus / Gradient | §5.1–5.2 選例題；§7.1 選更新式 | ⬜ |  |  |
 | 8 | Probability / Softmax / Cross Entropy | §6.1–6.4 選離散例子；Softmax／CE 外部補充 | ⬜ |  |  |
@@ -153,7 +153,7 @@ Git Commit：
 
 - 建立 Week 2 的 Python package 與 pytest 環境。
 
-### Week 2 — Python Engineering Basics（🟨 進行中）
+### Week 2 — Python Engineering Basics（✅ 完成）
 
 實際日期：
 
@@ -227,13 +227,15 @@ Git Commit：
 實際日期：
 
 - 2026-08-31：開始 Week 5，與 Week 2 並行；目前進行中。
-- 2026-09-01：MML.pdf §2.1 線性方程組已讀完（書本頁碼 19 - 21）；[2.1_systems_of_linear_equations.md](notes\math_for_machine_learning\02_linear_algebra\2.1_systems_of_linear_equations.md) 閱讀完成
+- 2026-09-01：MML.pdf §2.1 線性方程組已讀完（書本頁碼 19 - 21）；[2.1_systems_of_linear_equations.md](notes/math_for_machine_learning/02_linear_algebra/2.1_systems_of_linear_equations.md) 閱讀完成
 - 2026-09-06：MML.pdf §2.2 Matrices 已讀完（書本頁碼 22 - 26）。
-- 2026-09-07：[2.2_matrices.md](notes\math_for_machine_learning\02_linear_algebra\2.2_matrices.md) 閱讀完成
+- 2026-09-07：[2.2_matrices.md](notes/math_for_machine_learning/02_linear_algebra/2.2_matrices.md) 閱讀完成
+- 2026-09-13：[2.1_system_of_linear_equations.py](exercises/math_for_machine_learning/02_linear_algebra/2.1_system_of_linear_equations.py) 練習完成。
+- 2026-09-13：[2.2_matrices.py](exercises/math_for_machine_learning/02_linear_algebra/2.2_matrices.py) 練習完成。
 
 實際用時（概念／實作與除錯／整理，合計）：
 
-- 概念／實作與除錯／整理／合計：MML.pdf §2.1 2hrs ；MML.pdf §2.2 2hrs。
+- 概念／實作與除錯／整理／合計：MML.pdf §2.1 2+1+1=4hrs ；MML.pdf §2.2 2+1+1=4hrs。
 
 本週型態（一般／整合補課）：
 
@@ -257,10 +259,11 @@ MML／教材實際使用小節（必讀／參考）：
 
 完成：
 
-- [x] §2.1 閱讀完成；筆記完成。
-- [x] §2.2 閱讀完成；筆記完成。
+- [x] §2.1 閱讀、筆記、NumPy 練習與自我檢查完成。
+- [x] §2.2 閱讀、筆記、NumPy 練習與自我檢查完成。
+- [ ] §3.1–3.4：norm／inner product／distance／angle 的指定定義與例子。
+- [ ] Dot product／norm／cosine 手算與 NumPy 比對，以及整週驗收。
 - Week 5 保持 🟨：內積／norm／cosine 的實作與整週驗收尚未記錄完成。
-- Week 5 保持 🟨：§2.1 §2.2 numpy練習尚未記錄完成。
 
 知識檢核：
 
@@ -268,20 +271,19 @@ MML／教材實際使用小節（必讀／參考）：
 
 實作 / Experiment：
 
-- [2.1_systems_for_linear_equations.py](exercises/math_for_machine_learning/02_linear_algebra/2.1_system_of_linear_equations.py) NumPy 練習。
-- [2.2_matrices.py](exercises/math_for_machine_learning/02_linear_algebra/2.2_matrices.py) NumPy 練習。
-- 使用者自行手算或執行 NumPy 的結果：尚未回報。
+- [2.1_system_of_linear_equations.py](exercises/math_for_machine_learning/02_linear_algebra/2.1_system_of_linear_equations.py)：以矩陣秩判斷無解／唯一解／無限多解，使用 `np.linalg.solve` 求解並比對 `Ax = b`。
+- [2.2_matrices.py](exercises/math_for_machine_learning/02_linear_algebra/2.2_matrices.py)：矩陣乘法與 shape、轉置乘積、單位矩陣、線性方程組求解，以及 Q／K 注意力分數矩陣的 shape 練習。
 
 測試 / 驗收：
 
-- §2.2 自我檢查：尚未回報結果。
+- §2.1 自我檢查：完成。
+- §2.2 自我檢查：完成。
 - Dot product／norm／cosine 手算與 NumPy 比對：待完成。
 - 整週驗收：需能解釋內積與 cosine 的差別、零向量不能直接進行 cosine normalization。
 
 遇到的問題：
 
-- 曾詢問逆轉置公式的符號意義，以及取反矩陣和轉置為何可以交換順序；已在對話中解釋。
-- 另有 PDF 頁碼定位需求，已確認 PDF 第 32 頁對應書本頁碼 26。
+- 暫無。
 
 Git Commit：
 
@@ -295,12 +297,12 @@ Git Commit：
 
 未通過驗收／是否影響先備／移入哪個緩衝或順延週：
 
-- 閱讀完成；本週實作與獨立解釋尚未完成驗收，也未記錄為測試失敗。
+- §2.1–2.2 閱讀、筆記、NumPy 練習與自我檢查完成；§3.1–3.4、dot product／norm／cosine 實作與整週獨立解釋仍待完成，未記錄為測試失敗。
 - 若 shape／內積／norm 缺口影響 Week 6 或後續 NumPy 練習，先補先備，必要時使用 Week 13 緩衝並順延；目前尚無確定延期紀錄。
 
 下週第一件事：
 
-- 先花約 15–20 分鐘自我檢查 §2.2，再讀 §3.1 的 norm，接續 §3.2–3.4 的指定定義與例子。
+- 閱讀 §3.1 的 norm，接續 §3.2–3.4 的 inner product／distance／angle 指定定義與例子。
 - 用兩個小向量手算 dot product、norm、cosine，再以 NumPy 驗證；程式線沿用 Week 2 → Week 3 的安排。
 
 ## 規劃變更紀錄
