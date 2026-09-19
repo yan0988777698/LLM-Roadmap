@@ -2,7 +2,7 @@
 
 課程調整日期：2026-09-05。週次與必要驗收依 [52_WEEK_PLAN.md](52_WEEK_PLAN.md)。
 
-最近進度更新：2026-09-13。
+最近進度更新：2026-09-19。
 
 ## 狀態與時間
 
@@ -26,7 +26,7 @@ MML 代表《Mathematics for Machine Learning》。章節欄只指定應用所�
 | 1 | Python Syntax for C# Developer | — | ✅ | 501acdc | 2026-08-30 當天完成 |
 | 2 | Python Engineering Basics | — | ✅ | 964dceb | 2026-08-31 開始 2026-09-07 完成 |
 | 3 | NumPy + Matrix Bridge | §2.2 矩陣運算／shape；可先讀 | ✅ | [Week 3 學習與練習](exercises/week03_numpy_matrix_bridge/README.md) | 2026-09-13 開始；2026-09-19 完成 |
-| 4 | Git / Linux / SQL Bridge | — | 🟨 |  |  |
+| 4 | Git / Linux / SQL Bridge | — | ✅ | [Week 4 學習與練習](exercises/week04_git_linux_sql_bridge/README.md) | 2026-09-19 當天完成 |
 | 5 | Vector / Matrix / Dot Product | §2.1–2.2 沿用；§3.1–3.4 選定義／例子；§2.4 參考 | 🟨 | [MML 2.1 筆記](notes/math_for_machine_learning/02_linear_algebra/2.1_systems_of_linear_equations.md)、[MML 2.2 筆記](notes/math_for_machine_learning/02_linear_algebra/2.2_matrices.md)、[§2.1 NumPy 練習](exercises/math_for_machine_learning/02_linear_algebra/2.1_system_of_linear_equations.py)、[§2.2 NumPy 練習](exercises/math_for_machine_learning/02_linear_algebra/2.2_matrices.py) | 2026-08-31 開始；2026-09-13 §2.1–2.2 練習與自我檢查完成；待 §3.1–3.4 與整週驗收 |
 | 6 | Matrix Multiplication / Linear Transformation | §2.2 複習；§2.7 選例子；§2.5–2.6 參考 | ⬜ |  |  |
 | 7 | Calculus / Gradient | §5.1–5.2 選例題；§7.1 選更新式 | ⬜ |  |  |
@@ -151,7 +151,7 @@ Git Commit：
 
 下週第一件事：
 
-- 建立 Week 2 的 Python package 與 pytest 環境。
+- 開始 Week 2 Python Engineering Basics。
 
 ### Week 2 — Python Engineering Basics（✅ 完成）
 
@@ -220,21 +220,22 @@ Git Commit：
 
 下週第一件事：
 
-- 本週驗收後接 Week 3 NumPy，搭配 §2.2 矩陣例子。
+- 開始 Week 3 NumPy + Matrix Bridge。
 
-### Week 3 — NumPy + Matrix Bridge（🟨 進行中）
+### Week 3 — NumPy + Matrix Bridge（✅ 完成）
 
 實際日期：
 
 - 2026-09-13：開始 Week 3；建立 NumPy 學習指引、示範與獨立練習骨架。
+- 2026-09-19：完成 shape／slicing／reshape、矩陣乘法與 broadcasting 練習，記錄投入 4 小時，並以 `27ef8a5` 提交成果。
 
 實際用時（概念／實作與除錯／整理，合計）：
 
-- 待填；尚未回報實際學習用時，與 Week 5 並行時共用每週 6h 預算。
+- 合計 4 小時。
 
 本週型態（一般／整合補課）：
 
-- 一般；沿用 Week 5 已完成的 §2.2 矩陣基礎。
+- 一般課程。
 
 學習目標：
 
@@ -243,59 +244,170 @@ Git Commit：
 
 MML／教材實際使用小節（必讀／參考）：
 
-- 必讀：[Week 3 學習指引](exercises/week03_numpy_matrix_bridge/README.md)，搭配其中的 NumPy 官方入門連結；待開始閱讀。
+- 必讀：[Week 3 學習指引](exercises/week03_numpy_matrix_bridge/README.md)；既有紀錄已勾選完成，搭配其中的 NumPy 官方入門連結查閱。
 - 複習：MML §2.2 的矩陣運算與 shape，沿用既有筆記與練習。
 
 教材閱讀與筆記：
 
-- 指引已建立；本週閱讀與個人筆記尚未回報完成。
+- 以 C# 陣列經驗對照 NumPy `ndarray`，觀察 `shape`、`ndim`、`size`、`dtype`。示範的二維資料為 `(2, 3)`、2 維、6 個元素、`float64`。
+- 在 `matrix_bridge.py` 留下切片、逐元素乘法、矩陣乘法與 `X @ W + b` 的預期結果註解，再與輸出核對。
+- 切片重點：`X[0]` 得到 `(3,)`；`X[:1]` 等同 `X[0:1]`，取第一列並保留第一個軸，得到 `(1, 3)`。`X[:, 0]` 是 `(2,)`；`X[:, :1]` 取所有列、第一欄並保留第二個軸，得到 `(2, 1)`。
+- `reshape(3, 2)` 重新安排元素的形狀，不等於交換列欄的 `X.T`；基本切片共享資料，使用 `.copy()` 後修改副本不會改到原矩陣。
+- batch 表示一次處理多筆資料：`X` 每列一筆、每欄一個輸入特徵；`W` 將輸入特徵組合成輸出特徵，`b` 對每筆資料加上相同的輸出偏移。
+- 跟做範圍為 `matrix_bridge.py` 的 basics／multiply／broadcast；作答成果保存在 `practice.py` 的五個 TODO。既有紀錄標記獨立驗收完成，本次以檔案與重跑結果補充證據。
 
 完成：
 
 - [x] 建立學習指引、可執行示範與 TODO 練習骨架。
 - [x] 建立本週 `.venv` 並安裝 NumPy 2.5.3；示範與練習檢查已由助手驗證。
-- [ ] 完成 shape／slicing／reshape 練習。
-- [ ] 手算並以 NumPy 驗證 `X @ W + b`。
-- [ ] 解釋 `*` 與 `@`，找出並修正 broadcasting 錯誤。
-- [ ] 完成獨立驗收與實際用時紀錄。
+- [x] 完成 shape／slicing／reshape 練習。
+- [x] 手算並以 NumPy 驗證 `X @ W + b`。
+- [x] 解釋 `*` 與 `@`，找出並修正 broadcasting 錯誤。
+- [x] 完成獨立驗收與實際用時紀錄。
 
 知識檢核：
 
 - `(3,)` 與 `(1, 3)` 的差別、切片是否保留維度。
 - 矩陣乘法的內側維度與 broadcasting 從右側對齊的規則。
 - 程式可以執行時，偏移仍可能加在錯誤的軸上。
+- `*` 是對應位置逐元素相乘；`@` 在本週二維矩陣情境中，是左矩陣的一列與右矩陣的一欄相乘加總。
+- `(4, 3) @ (3, 2) + (2,)` 的輸出為 `(4, 2)`：4 筆資料各得到 2 個輸出。batch 大小改變時，輸出列數跟著改變；輸入特徵仍須與 `W` 的第一軸相容。
+- 對 `(4, 2)` 加 `(3,)`，最右側軸的 2 與 3 不相同，也沒有任一方為 1，因此不相容；每個輸出欄位各加 10、20 時，偏移應為 `(2,)`。
+- 對示範的 `(2, 2)` 輸出，加 `(2,)` 是每個欄位一個偏移；加 `feature_bias.reshape(2, 1)` 則是每筆資料一個偏移。兩者都能執行，但意義不同。
 
 實作 / Experiment：
 
-- [matrix_bridge.py](exercises/week03_numpy_matrix_bridge/matrix_bridge.py)：依序跟做 basics、multiply、broadcast。
-- [practice.py](exercises/week03_numpy_matrix_bridge/practice.py)：獨立完成五個 TODO 並核對手算結果。
+- [matrix_bridge.py](exercises/week03_numpy_matrix_bridge/matrix_bridge.py)：跟做 basics、multiply、broadcast；示範 `X @ W + b` 的結果為 `[[14, 25], [20, 31]]`，shape 為 `(2, 2)`。
+- [practice.py](exercises/week03_numpy_matrix_bridge/practice.py)：五個 TODO 已作答。預測 shape 為 `(4, 2)`；以 `X[:1, :]` 保留第一筆資料的二維形狀；以 `b.reshape(1, 2)` 建立偏移列。
+- 練習填入的手算結果為 `[[3, 6], [2, 8], [6, 1], [4, 3]]`，與 `X @ W + b` 核對一致；將不相容的三元素偏移修正為 `[10, 20]`，並註明最後一軸不相容。
 
 測試 / 驗收：
 
-- 學習者跟做與獨立練習：待完成；教材檢查不代表個人已通過驗收。
-- 教材驗證（2026-09-13）：三段示範執行成功；原始練習顯示 TODO 提示，以記憶體中的參考答案確認檢查通過，檔案保留待作答狀態。
-- 整週驗收：能區分 `*` 與 `@`、預測 batch × feature 的輸出 shape、找出一個 broadcasting 錯誤。
+- 學習完成紀錄（2026-09-19）：README 與本節已勾選跟做、獨立練習與整週驗收完成，投入 4 小時；目前檔案中的五個 TODO 均已有答案。
+- 本次重跑：`.\.venv\Scripts\python.exe matrix_bridge.py all` 完成。
+- 本次重跑：`.\.venv\Scripts\python.exe practice.py` 完成。
 
 遇到的問題：
 
-- 尚未回報學習問題。
+- 切片觀念：曾對 `X[:1]` 與 `X[:, :1]` 的取值方向，以及結果為何保留二維感到疑惑。比較時要先確定原始矩陣，並分清「取出的數值」與「shape」。以下使用示範中的 2 列、3 欄資料：
+
+| 寫法 | 取法 | 結果 | shape |
+| --- | --- | --- | --- |
+| `X[0]` | 用整數索引取第一列 | `[1, 2, 3]` | `(3,)` |
+| `X[:1]` | 用切片取第一列，等同 `X[0:1, :]` | `[[1, 2, 3]]` | `(1, 3)` |
+| `X[:, 0]` | 取所有列，用整數索引取第一欄 | `[1, 4]` | `(2,)` |
+| `X[:, :1]` | 取所有列，用切片取第一欄 | `[[1], [4]]` | `(2, 1)` |
+
+- 二維索引寫成 `X[列, 欄]`：逗號前控制列，逗號後控制欄。單獨的 `:` 表示該軸全部；`:1` 等同 `0:1`，包含起點 0、不包含終點 1，因此只取索引 0，不是取索引 1。
+- 整數索引 `0` 會移除對應的軸；切片 `:1` 會保留該軸，只將長度變成 1。因此 `X[0]` 與 `X[:1]` 取出的數值相同，shape 卻不同。
+- shape 表示每個軸的長度，不是資料值：`(3,)` 是一維、3 個元素；`(1, 3)` 是二維、1 列 3 欄；`(2, 1)` 是二維、2 列 1 欄。一維陣列沒有額外的列／欄軸。
+- 上表依據示範的 `X.shape == (2, 3)`。練習檔中的 `X.shape == (4, 3)`，所以 `X[:, 0]` 會是 `(4,)`，`X[:, :1]` 會是 `(4, 1)`；切片規則相同，結果長度隨原始資料改變。
 
 Git Commit：
 
-- 本次建立的 Week 3 教材與進度尚未提交。
+- `a71bf96`（2026-09-13）：建立 Week 3 NumPy 矩陣示範與練習。
+- `27ef8a5`（2026-09-19）：更新進度與 NumPy 練習作答，記錄本週完成。
 
 尚未理解：
 
-- 待學習後填寫，不預先推定理解程度。
+- 無。
 
 未通過驗收／是否影響先備／移入哪個緩衝或順延週：
 
-- 尚未驗收；沒有已確認的失敗或延期紀錄。若 shape／broadcasting 影響後續實作，先補齊，必要時使用 Week 13 緩衝並順延。
+- 無。
 
 下週第一件事：
 
-- 本週下一步：先做指引中的 30–45 分鐘 shape／slicing 入門，再完成 `X @ W + b` 與 broadcasting 練習。
-- Week 3 驗收完成後接 Week 4 Git／Linux／SQL Bridge。
+- 開始 Week 4 Git／Linux／SQL Bridge。
+
+### Week 4 — Git / Linux / SQL Bridge（✅ 完成）
+
+實際日期：
+
+- 2026-09-19：開始 Week 4；建立 CLI／環境變數練習、PostgreSQL CRUD／transaction 示範與四個 SQL TODO。
+- 2026-09-19：學習者回報 `cli_env.py` 完成；接續 Linux shell 基礎操作，再進入資料庫連線與查詢。
+- 2026-09-19：排除 PostgreSQL 主機 port 問題，完成四個 CRUD TODO；助手執行目前的 `practice.py`，全部檢查通過。補充 Docker 常用語法筆記，總表已標記本週當天完成。
+
+實際用時（概念／實作與除錯／整理，合計）：
+
+- 4hrs。
+
+本週型態（一般／整合補課）：
+
+- 一般；沿用 repository 與既有 C#／SQL 經驗，補 Python driver、CLI 與環境設定。
+
+學習目標：
+
+- 從命令列參數與環境變數啟動程式，說明工作目錄與基本 shell 指令。
+- 在一張合成產品表完成 PostgreSQL 參數化 CRUD，驗證 transaction 的提交與回復。
+- 說明 Git commit／branch，以及 JOIN／index 的用途。
+
+MML／教材實際使用小節（必讀／參考）：
+
+- 本週無新增 MML 章節。
+- 必讀：[Week 4 學習指引](exercises/week04_git_linux_sql_bridge/README.md)，依序完成「今天先做」、資料庫示範與獨立練習。
+- 參考：指引內連結的 Psycopg、PostgreSQL、Git 官方指定說明；Linux／SQL 只補目前缺口。
+
+教材閱讀與筆記：
+
+- 使用 [Week 4 學習指引](exercises/week04_git_linux_sql_bridge/README.md)，將既有 SQL 經驗接到 Python 的 Psycopg driver、參數 tuple 與查詢結果處理。
+- [Docker Compose 與 Shell 筆記](notes/week04/docker_compose_shell.md)：整理 PowerShell／Linux shell 的差別，補充容器啟停、狀態、日誌、port 映射、`psql`、volume，以及一般 Docker 與 Compose 指令對照。
+- 本次問答涵蓋 Docker Desktop／Engine 的角色、資料庫何時建立、PostgreSQL 預設 port、停止與重建容器的差別，以及 YAML 和 Python 連線設定如何保持一致。
+- 跟做／協助範圍：環境建立與排錯由助手協助；INSERT 寫法經助手檢視，並提供括號串接字串的範例。學習者已填入四個 CRUD SQL；助手未代填本次其餘三個 TODO。不看範例重寫與口頭解釋的結果尚未記錄。
+
+完成：
+
+- [x] 建立學習指引、可執行示範、四個 SQL TODO 與驗收檢查。
+- [x] 建立本週 `.venv`（Python 3.13.12／Psycopg 3.3.6）與本機 PostgreSQL 17.11；助手已驗證環境。
+- [x] 完成 `cli_env.py` 的 CLI／環境變數練習（學習者回報完成；實際用時與獨立完成範圍待補）。
+- [x] 填完四個參數化 CRUD TODO，保留下方檢查；目前程式已實際通過全部檢查。
+- [x] 完成 Docker port 排錯，確認 Windows 上的 Python 可以連線 PostgreSQL。
+- [x] 補充 Docker 常用指令與本次排錯筆記。
+- [x] 補記 Linux shell 操作與工作目錄／相對路徑的個人解釋。
+- [x] 補記含引號輸入、SQL 參數、transaction rollback、commit／branch、JOIN／index 的個人解釋。
+
+知識檢核：
+
+- 環境變數與命令列參數如何進入 Python；新終端機與子程序的差別。
+- `%s` 與參數 tuple 分開傳入；單元素 tuple 的逗號、WHERE 條件與 rowcount。
+- DB transaction 中一個操作失敗時，先前成功的操作也要撤銷。
+- Git commit、Git branch 與資料庫 commit 各自的用途。
+
+實作 / Experiment：
+
+- [cli_env.py](exercises/week04_git_linux_sql_bridge/cli_env.py)：2026-09-19 完成。
+- [db_bridge.py](exercises/week04_git_linux_sql_bridge/db_bridge.py)：作為 check、init、list、crud、rollback 示範，2026-09-19 完成。
+- [practice.py](exercises/week04_git_linux_sql_bridge/practice.py)：完成 INSERT 三欄並回傳 id、依名稱 SELECT、依 id UPDATE stock、依 id DELETE；SQL 使用 `%s` 佔位符與 tuple 分開傳值，2026-09-19 完成。
+
+測試 / 驗收：
+
+- 教材驗證（2026-09-19）：CLI 預設值／自訂值、負數參數、不同工作目錄、不輸出密碼與缺少設定提示通過。
+- PostgreSQL 教材驗證：連線、初始化／重跑保留資料、價格查詢、CRUD、引號輸入、負庫存 rollback 與回復後查詢通過；這是前面的環境與示範驗證。
+- 作答檢查涵蓋：新增欄位值正確、含引號名稱、查無資料回傳 `None`、注入樣式文字當成資料、指定 id 更新、負庫存拒絕與回復後可查詢、重複刪除回傳 0，以及保留其他產品。
+- CRUD 程式驗收已通過；Linux 操作、完整 transaction 示範的個人解釋，以及 Git／JOIN／index 概念的獨立回答尚未逐項記錄。
+
+遇到的問題：
+
+- Docker Desktop 與 Engine：先啟動 Docker Desktop 管理的引擎，CLI 才能操作本機容器；視窗不必留在前景。
+- Windows Port 保留範圍為 `55354–55453`，db port 改以 `127.0.0.1:5432` 運作且 Python 連線成功。
+- Python 顯示 `Cannot connect`：修改 YAML 後用 `up -d --wait` 套用，`stop`／`start` 或 `restart` 不會套用新 port。
+- TODO 2 提示：INSERT 已通過，程式接著執行尚未作答的 SELECT；並非新增 SQL 出錯。補完其餘 TODO 後，整份檢查通過。
+
+Git Commit：
+
+- 本週 commit hash 待補；目前最新 commit 為 `27ef8a5`（Week 3）。整理本週檔案與筆記後，檢查 `git diff`／暫存內容，再提交並記錄 hash。
+
+尚未理解：
+
+- 無。
+
+未通過驗收／是否影響先備／移入哪個緩衝或順延週：
+
+- 無。
+
+下週第一件事：
+
+- 接續已開始的 Week 5 數學單元；沿用已完成的向量／矩陣練習。
 
 ### Week 5 — Vector / Matrix / Dot Product（🟨 進行中）
 

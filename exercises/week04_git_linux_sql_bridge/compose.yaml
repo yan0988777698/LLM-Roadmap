@@ -1,0 +1,21 @@
+name: roadmap-week04
+
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: week04_bridge
+      POSTGRES_USER: week04
+      POSTGRES_PASSWORD: ${WEEK4_DB_PASSWORD:?Set WEEK4_DB_PASSWORD in your terminal first}
+    ports:
+      - "127.0.0.1:${WEEK4_DB_PORT:-5432}:5432"
+    volumes:
+      - week04_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U week04 -d week04_bridge"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  week04_data:
