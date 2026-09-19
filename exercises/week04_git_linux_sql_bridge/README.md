@@ -2,7 +2,7 @@
 
 本週把既有 C#／SQL 經驗接到 Python：從命令列與環境變數取得設定，用 PostgreSQL 的一張合成產品表完成 CRUD，理解參數化查詢與 transaction。範圍依 [52 週計畫](../../52_WEEK_PLAN.md)，學習結果記在 [PROGRESS.md](../../PROGRESS.md)。
 
-2026-09-19 啟動紀錄：已建立本目錄 `.venv`（Python 3.13.12／Psycopg 3.3.6）與本機 PostgreSQL 17.11，並驗證示範。獨立練習的四個 TODO 保留待作答。
+2026-09-19 完成紀錄：已建立本目錄 `.venv`（Python 3.13.12／Psycopg 3.3.6）與本機 PostgreSQL 17.11；四個 CRUD TODO 已作答並通過檢查。實際投入 4 小時，成果提交為 `59759e0`，詳細過程見 [PROGRESS.md](../../PROGRESS.md)。
 
 ## 今天先做：30–45 分鐘
 
@@ -38,6 +38,7 @@ PowerShell 的 `$env:WEEK4_MODE` 設定保留在目前視窗，之後啟動的�
 | [schema.sql](schema.sql) | 一張 `week04_products` 合成產品表 |
 | [db_bridge.py](db_bridge.py) | 可跟做的連線、CRUD、rollback 示範 |
 | [practice.py](practice.py) | 四個 SQL TODO 與可重跑的資料庫檢查 |
+| [test_config.py](test_config.py) | 不需啟動資料庫的 port／設定／命令列回歸檢查 |
 | [Docker Compose 與 Shell 筆記](../../notes/week04/docker_compose_shell.md) | 啟動／進入容器的指令拆解、環境辨認與本次錯誤原因 |
 
 | 項目 | 預估 | 成果 |
@@ -135,7 +136,15 @@ with conn.transaction():
 .\.venv\Scripts\python.exe practice.py
 ```
 
-初始檔案會顯示 `TODO 1` 並以非零狀態結束，代表還沒完成。檢查會涵蓋引號、查無資料、負庫存、重複刪除，以及更新／刪除不能改到其他產品。練習使用連線專用的 temporary table，結束時回復，不修改示範表的產品。
+目前檔案已有完整作答；最初的骨架會顯示 `TODO 1` 並以非零狀態結束。檢查會涵蓋引號、查無資料、負庫存、重複刪除，以及更新／刪除不能改到其他產品。練習使用連線專用的 temporary table，結束時回復，不修改示範表的產品。
+
+`practice.py` 只執行整份驗收，不接受 `create_product 杯子 50 3` 等位置參數；多打參數會顯示用法並結束，不會新增商品。可用 `--help` 查看用途。
+
+設定與命令列的回歸檢查不需要 Docker，使用標準函式庫 `unittest`：
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest test_config -v
+```
 
 不要用匯入示範函式取代自己填 SQL。若有參考範例，把該部分記為跟做，再不看範例重寫一次確認理解。
 
@@ -182,7 +191,7 @@ git diff
 若該 branch 已存在，用 `git switch week04-git-sql`。完成練習與學習紀錄後，明確加入本週檔案，檢查暫存內容，再提交：
 
 ```powershell
-git add exercises/week04_git_linux_sql_bridge PROGRESS.md
+git add exercises/week04_git_linux_sql_bridge notes/week04 PROGRESS.md
 git diff --cached
 git commit -m "Complete week 4 Git and PostgreSQL practice"
 ```
@@ -195,7 +204,8 @@ JOIN 的用途是依關聯條件合併資料，例如產品與分類；本週維
 
 - Docker 顯示找不到 pipe／daemon：先確認 Docker Desktop 的 Linux engine 已啟動，再 `docker compose up -d --wait`。
 - `Set WEEK4_DB_PASSWORD`：在執行 Python 的同一個終端機設定密碼；Compose 與 Python 都需要它。
-- `55432` 已被使用：啟動前設定 `$env:WEEK4_DB_PORT = '55433'`，讓 Compose 與 Python 使用相同新 port。
+- 主機 port 被占用或 Windows 拒絕綁定：目前預設為 `5432`；可確認 `15432` 可用後，在同一個 PowerShell 設定 `$env:WEEK4_DB_PORT = '15432'`，再 `docker compose up -d --wait`，Python 也會使用相同 port。修改 YAML 預設值時，Python 預設值也要同步；`stop`／`start` 不會套用新映射。
+- 本次 Windows 曾保留 `55354–55453`，所以 `55432`、`55433` 都不能用；不要只將 port 加 1。查詢保留範圍與連線占用的方法見 [Docker 筆記](../../notes/week04/docker_compose_shell.md)。
 - 帳密錯誤：使用建立這個 volume 時的密碼，環境變數改值不會自動更新資料庫帳密。
 - `Run db_bridge.py init first`：先建立本週資料表。
 - 找不到 `psycopg`：用本目錄 `.venv` 裡的 Python 安裝 requirements，執行時也用同一個 Python。
@@ -203,11 +213,11 @@ JOIN 的用途是依關聯條件合併資料，例如產品與分類；本週維
 ## 完成標準與學習筆記
 
 - [x] 能用 CLI 參數與環境變數啟動程式，說明兩者差別。
-- [ ] 能解釋工作目錄、相對路徑與基本 Linux shell 指令。
-- [ ] PostgreSQL 連線成功，完成四個參數化 CRUD TODO。
-- [ ] 含引號的產品名稱可以正確儲存與查詢。
-- [ ] 故意失敗的 transaction 會撤銷同組新增，並可繼續查詢。
-- [ ] 能說明 Git commit／branch、DB transaction，以及 JOIN／index 的用途。
-- [ ] 完成一個本週 commit，並記下實際用時、跟做／獨立完成範圍。
+- [x] 能解釋工作目錄、相對路徑與基本 Linux shell 指令。
+- [x] PostgreSQL 連線成功，完成四個參數化 CRUD TODO。
+- [x] 含引號的產品名稱可以正確儲存與查詢。
+- [x] 故意失敗的 transaction 會撤銷同組新增，並可繼續查詢。
+- [x] 能說明 Git commit／branch、DB transaction，以及 JOIN／index 的用途。
+- [x] 完成一個本週 commit，並記下實際用時、跟做／獨立完成範圍。
 
-實際日期與用時：待填。能獨立解釋的部分：待填。還不理解的部分：待填。程式版本與資料庫版本：執行 `db_bridge.py check` 後記錄。環境與示範由助手驗證，不等於學習者已完成本週驗收。
+實際日期與用時：2026-09-19，合計 4 小時。完成狀態依學習者回報及 PROGRESS 紀錄同步；程式檢查由助手重跑確認。環境與 INSERT 寫法曾由助手協助，四題作答與跟做範圍見進度紀錄；目前未回報未理解項目。版本為 Python 3.13.12／Psycopg 3.3.6／PostgreSQL 17.11。

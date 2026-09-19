@@ -31,7 +31,9 @@ python -m venv .venv
 .\.venv\Scripts\python.exe practice.py
 ```
 
-`practice.py` 初次執行會提示第一個未完成題目；依序替換 `None`，保留檢查。示範跑成功只代表環境與範例正常，獨立練習仍需自己完成。
+目前 `practice.py` 已保存完成的五題作答，可直接重跑檢查。最初的練習骨架會提示第一個未完成題目；若要重練，可自行將答案改回 `None`，並保留下方檢查。
+
+`requirements.txt` 固定本次驗證使用的 NumPy 2.5.3。TODO 4 保留手算值為 `expected`，另用 `Y = X @ W + b` 計算，再比較兩者；若更換題目輸入，也要重新手算對應的 `expected`。
 
 ## 概念對照
 

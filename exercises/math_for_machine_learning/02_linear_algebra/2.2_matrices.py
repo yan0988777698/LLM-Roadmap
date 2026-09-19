@@ -53,6 +53,7 @@ W_k = np.zeros((8, 3))
 Q = X @ W_q  # (4, 3)
 K = X @ W_k  # (4, 3)
 # 計算注意力分數矩陣，將query矩陣與key矩陣的轉置相乘
-# 向量內積數值越大，表示query與key越相似，注意力分數越高
+# 內積作為匹配分數，同時受向量方向與長度影響；不是正規化的 cosine similarity。
+# 此處只驗證 shape；完整注意力權重還需要縮放與逐列 softmax。
 scores = Q @ K.T  # (4, 4)
 assert scores.shape == (4, 4)

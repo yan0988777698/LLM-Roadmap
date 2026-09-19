@@ -2,9 +2,8 @@
 
 
 class InvalidAmountError(ValueError):
-    """Raised when a deposit or withdrawal amount is not positive."""
+    """Raised when an initial balance or transaction amount is invalid."""
 
 
 class InsufficientFundsError(ValueError):
     """Raised when an account cannot cover a withdrawal."""
-

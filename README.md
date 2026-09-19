@@ -23,7 +23,7 @@ MCP、Fine-tuning（SFT／PEFT／LoRA／QLoRA）、vLLM、Quantization 與 Kuber
 3. 在 [PROGRESS.md](PROGRESS.md) 記錄實際時間、成果、未通過項目與延期；讀完教材不直接等於完成。
 4. 依 [projects/BankGPT.md](projects/BankGPT.md) 逐版完成專案。
 
-已完成的 Week 1、進行中的 Week 2／Week 5 與 MML 筆記保留。可先完成 Week 2，再把 NumPy 與矩陣筆記交叉練習；不需要等數學整章讀完。
+目前已完成 Week 1–4；Week 5 的 MML §2.1–2.2 筆記與練習已完成，接續 §3.1–3.4 的 norm／inner product／angle 與 cosine 實作。實際用時與驗收結果以 [PROGRESS.md](PROGRESS.md) 為準，不需要重新閱讀已完成的矩陣內容。
 
 ## 學習主線
 

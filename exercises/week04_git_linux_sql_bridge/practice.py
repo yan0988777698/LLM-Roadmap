@@ -1,5 +1,7 @@
 """Complete four parameterized SQL statements. Keep the checks below."""
 
+import argparse
+
 from db_bridge import connect, psycopg
 
 
@@ -7,7 +9,7 @@ def create_product(conn, name: str, price_twd: int, stock: int):
     # TODO 1: INSERT the three values, then RETURNING id.
     # Pass values separately in a tuple. Do not use f-strings or concatenate SQL.
     query = (
-        "Insert into week04_products (name, price_twd, stock)"
+        "Insert into week04_products (name, price_twd, stock) "
         "values (%s, %s, %s) RETURNING id"
     )
     parameters = (name, price_twd, stock)
@@ -95,6 +97,10 @@ def check_answers(conn) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Run all four CRUD checks. No positional arguments are accepted."
+    )
+    parser.parse_args()
     try:
         with connect() as conn:
             check_answers(conn)

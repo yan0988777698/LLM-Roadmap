@@ -168,6 +168,10 @@ dataclass 仍然是 class，可以自己加入 `deposit()`、`withdraw()` 等方
 
 本專案使用 `@dataclass(slots=True)`。`slots=True` 在這個類別中限制實例使用已定義的屬性，並通常減少每個實例的記憶體負擔；它不代表物件不可修改。[Python dataclass 說明](https://docs.python.org/3/library/dataclasses.html)
 
+本次檢查補上 `__post_init__()`：dataclass 產生的初始化方法會呼叫它，檢查初始餘額必須有限且不小於零。存款／提款共用 `_validate_amount()`，要求金額有限且大於零；`Decimal("NaN")` 與 `Decimal("Infinity")` 都不接受。這是自己寫的值驗證，不是 dataclass 或 type hint 自動保證。[Decimal.is_finite](https://docs.python.org/3/library/decimal.html#decimal.Decimal.is_finite)
+
+本練習以 `Decimal` 為輸入契約，未實作任意輸入轉型；`balance` 仍可直接賦值，應透過存提款方法修改。本週只練習套件、例外與測試，未加入完整帳務系統設計。
+
 ## typing：標示預期的資料型別
 
 本專案的方法宣告：

@@ -40,12 +40,13 @@ def main() -> None:
     np.testing.assert_array_equal(bias_row, [[1.0, -1.0]])
 
     # TODO 4：先在紙上手算 Y = X @ W + b 的數值，再以 NumPy 實作同一個運算。
-    Y = np.array([[3.0, 6.0], [2.0, 8.0], [6.0, 1.0], [4.0, 3.0]])
+    expected = np.array([[3.0, 6.0], [2.0, 8.0], [6.0, 1.0], [4.0, 3.0]])
+    Y = X @ W + b
     if Y is None:
         print("TODO 4: Compute Y after calculating the values by hand.")
         return
     assert Y.shape == predicted_shape
-    np.testing.assert_allclose(Y, X @ W + b)
+    np.testing.assert_allclose(Y, expected)
 
     # TODO 5：bad_bias 不相容。改成每個輸出欄位各加 10、20。
     # 請保留 bad_bias，另填 corrected_bias，並寫下哪一個軸不相容。
@@ -55,6 +56,8 @@ def main() -> None:
         Y + bad_bias
     except ValueError as error:
         print("Expected error to explain:", error)
+    else:
+        raise AssertionError("The incompatible bias must raise ValueError.")
     corrected_bias = np.array([10.0, 20.0])
     if corrected_bias is None:
         print("TODO 5: Fill corrected_bias and explain the incompatible axis.")
