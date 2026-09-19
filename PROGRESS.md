@@ -25,8 +25,8 @@ MML 代表《Mathematics for Machine Learning》。章節欄只指定應用所�
 | ---: | --- | --- | --- | --- | --- |
 | 1 | Python Syntax for C# Developer | — | ✅ | 501acdc | 2026-08-30 當天完成 |
 | 2 | Python Engineering Basics | — | ✅ | 964dceb | 2026-08-31 開始 2026-09-07 完成 |
-| 3 | NumPy + Matrix Bridge | §2.2 矩陣運算／shape；可先讀 | 🟨 | [Week 3 學習與練習](exercises/week03_numpy_matrix_bridge/README.md) | 2026-09-13 開始；教材與練習骨架已建立，待實作與驗收 |
-| 4 | Git / Linux / SQL Bridge | — | ⬜ |  |  |
+| 3 | NumPy + Matrix Bridge | §2.2 矩陣運算／shape；可先讀 | ✅ | [Week 3 學習與練習](exercises/week03_numpy_matrix_bridge/README.md) | 2026-09-13 開始；2026-09-19 完成 |
+| 4 | Git / Linux / SQL Bridge | — | 🟨 |  |  |
 | 5 | Vector / Matrix / Dot Product | §2.1–2.2 沿用；§3.1–3.4 選定義／例子；§2.4 參考 | 🟨 | [MML 2.1 筆記](notes/math_for_machine_learning/02_linear_algebra/2.1_systems_of_linear_equations.md)、[MML 2.2 筆記](notes/math_for_machine_learning/02_linear_algebra/2.2_matrices.md)、[§2.1 NumPy 練習](exercises/math_for_machine_learning/02_linear_algebra/2.1_system_of_linear_equations.py)、[§2.2 NumPy 練習](exercises/math_for_machine_learning/02_linear_algebra/2.2_matrices.py) | 2026-08-31 開始；2026-09-13 §2.1–2.2 練習與自我檢查完成；待 §3.1–3.4 與整週驗收 |
 | 6 | Matrix Multiplication / Linear Transformation | §2.2 複習；§2.7 選例子；§2.5–2.6 參考 | ⬜ |  |  |
 | 7 | Calculus / Gradient | §5.1–5.2 選例題；§7.1 選更新式 | ⬜ |  |  |
